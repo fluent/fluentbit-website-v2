@@ -1,0 +1,656 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Serial Interface | Fluent Bit</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.1.0">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../input/stdin.html" />
+    
+    
+    <link rel="prev" href="../input/mqtt.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="3.5" data-basepath=".." data-revision="Tue Oct 20 2015 16:04:41 GMT-0600 (CST)">
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Type to search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        
+
+        
+
+        
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="about/index.html">
+            
+                
+                    <a href="../about/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        About
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="about/fluentd_and_fluentbit.html">
+            
+                
+                    <a href="../about/fluentd_and_fluentbit.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Fluentd &amp; Fluent Bit
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="about/license.html">
+            
+                
+                    <a href="../about/license.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        License
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="getting_started/index.html">
+            
+                
+                    <a href="../getting_started/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Getting Started
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="getting_started/requirements.html">
+            
+                
+                    <a href="../getting_started/requirements.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Requirements
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="getting_started/installation.html">
+            
+                
+                    <a href="../getting_started/installation.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Build and Install
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="getting_started/debian_ubuntu.html">
+            
+                
+                    <a href="../getting_started/debian_ubuntu.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        Debian/Ubuntu
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="getting_started/raspberry_pi.html">
+            
+                
+                    <a href="../getting_started/raspberry_pi.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        Raspberry Pi
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="input/index.html">
+            
+                
+                    <a href="../input/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Input Plugins
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="input/cpu.html">
+            
+                
+                    <a href="../input/cpu.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        CPU Usage
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="input/kmsg.html">
+            
+                
+                    <a href="../input/kmsg.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        Kernel Log Buffer
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="input/mem.html">
+            
+                
+                    <a href="../input/mem.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        Memory Usage
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="input/mqtt.html">
+            
+                
+                    <a href="../input/mqtt.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        MQTT
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.5" data-path="input/serial.html">
+            
+                
+                    <a href="../input/serial.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        Serial Interface
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="input/stdin.html">
+            
+                
+                    <a href="../input/stdin.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        Standard Input
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="input/xbee.html">
+            
+                
+                    <a href="../input/xbee.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        XBee Radio
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="output/index.html">
+            
+                
+                    <a href="../output/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Output Plugins
+                    </a>
+                
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="output/fluentd.html">
+            
+                
+                    <a href="../output/fluentd.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        Fluentd
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="output/stdout.html">
+            
+                
+                    <a href="../output/stdout.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        Standard Output
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="output/td.html">
+            
+                
+                    <a href="../output/td.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        Treasure Data
+                    </a>
+                
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="development/index.html">
+            
+                
+                    <a href="../development/index.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Development
+                    </a>
+                
+            
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                Published with GitBook
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Table of Contents"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Search"><i class="fa fa-search"></i></a>
+    
+    <div id="font-settings-wrapper" class="dropdown pull-left">
+        <a href="#" class="btn toggle-dropdown" aria-label="Font Settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="reduce-font-size" class="button size-2">A</button>
+        <button type="button" id="enlarge-font-size" class="button size-2">A</button>
+    </div>
+
+    <div class="buttons font-family-list">
+        <button type="button" data-font="0" class="button">Serif</button>
+        <button type="button" data-font="1" class="button">Sans</button>
+    </div>
+
+    <div class="buttons color-theme-list">
+        <button type="button" id="color-theme-preview-0" class="button size-3" data-theme="0">White</button>
+        <button type="button" id="color-theme-preview-1" class="button size-3" data-theme="1">Sepia</button>
+        <button type="button" id="color-theme-preview-2" class="button size-3" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Actions Right -->
+    
+    <div class="dropdown pull-right">
+        <a href="#" class="btn toggle-dropdown" aria-label="Share"><i class="fa fa-share-alt"></i>
+        </a>
+        <div class="dropdown-menu font-settings dropdown-left">
+            <div class="dropdown-caret">
+                <span class="caret-outer"></span>
+                <span class="caret-inner"></span>
+            </div>
+            <div class="buttons">
+                <button type="button" data-sharing="twitter" class="button">
+                    Share on Twitter
+                </button>
+                <button type="button" data-sharing="google-plus" class="button">
+                    Share on Google
+                </button>
+                <button type="button" data-sharing="facebook" class="button">
+                    Share on Facebook
+                </button>
+                <button type="button" data-sharing="weibo" class="button">
+                    Share on Weibo
+                </button>
+                <button type="button" data-sharing="instapaper" class="button">
+                    Share on Instapaper
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Google"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+    
+    
+    
+
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Fluent Bit</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="serial-interface">Serial Interface</h1>
+<p>The <strong>serial</strong> input plugin, allows to retrieve messages/data from a <em>Serial</em> interface. In order to use this plugin is required to write a simple configuration file before to run <a href="http://fluentbit.io" target="_blank">Fluent Bit</a>.</p>
+<h2 id="configuration-file">Configuration File</h2>
+<p><a href="http://fluentbit.io" target="_blank">Fluent Bit</a> sources distribute an example configuration file for the serial interface and it&apos;s located under <em>conf/serial_input.conf</em>. The plugin recognize the following setup under a <strong>SERIAL</strong> section:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>File</td>
+<td>Absolute path to the device entry, e.g: /dev/ttyS0</td>
+</tr>
+<tr>
+<td>Bitrate</td>
+<td>The bitrate for the communication, e.g: 9600, 38400, 115200, etc</td>
+</tr>
+</tbody>
+</table>
+<p>Here is an example:</p>
+<pre><code class="lang-python">[SERIAL]
+    <span class="hljs-comment"># File</span>
+    <span class="hljs-comment"># ====</span>
+    <span class="hljs-comment"># Filename of serial port. e.g. /dev/ttyS0, /dev/ttyAMA0</span>
+
+    File    /dev/ttyS0
+
+    <span class="hljs-comment"># Bitrate</span>
+    <span class="hljs-comment"># ========</span>
+    <span class="hljs-comment"># Specify the bitrate to communicate using the port.</span>
+
+    Bitrate <span class="hljs-number">9600</span>
+</code></pre>
+<h2 id="running">Running</h2>
+<p>Once the configuration file is in place, collecting data from the <em>Serial</em> interface is very straighforward. Just let <a href="http://fluentbit.io" target="_blank">Fluent Bit</a> know the input/output plugins plus the configuration file location, e.g:</p>
+<pre><code class="lang-bash">$ bin/fluent-bit -c serial.conf -i serial -o stdout -V
+Fluent Bit v0.<span class="hljs-number">3.0</span>
+Copyright (C) Treasure Data
+
+[<span class="hljs-number">2015</span>/<span class="hljs-number">07</span>/<span class="hljs-number">29</span> <span class="hljs-number">12</span>:<span class="hljs-number">39</span>:<span class="hljs-number">37</span>] [ info] Configuration
+flush time     : <span class="hljs-number">5</span> seconds
+input plugins  : serial
+collectors     :
+[<span class="hljs-number">2015</span>/<span class="hljs-number">07</span>/<span class="hljs-number">29</span> <span class="hljs-number">12</span>:<span class="hljs-number">39</span>:<span class="hljs-number">37</span>] [ info] starting engine
+[<span class="hljs-number">2015</span>/<span class="hljs-number">07</span>/<span class="hljs-number">29</span> <span class="hljs-number">12</span>:<span class="hljs-number">39</span>:<span class="hljs-number">37</span>] [debug] Serial / file=<span class="hljs-string">&apos;/dev/ttyS0&apos;</span> bitrate=<span class="hljs-string">&apos;9600&apos;</span>
+</code></pre>
+<blockquote>
+<p>the -V argument is optional just to print out verbose messages.</p>
+</blockquote>
+<p>Now every message that arrives to the <em>/dev/ttyS0</em> interface will be printed to the standard output:</p>
+<pre><code class="lang-bash">$ bin/fluent-bit -c serial.conf -i serial -o stdout -V
+Fluent Bit v0.<span class="hljs-number">3.0</span>
+Copyright (C) Treasure Data
+
+[<span class="hljs-number">2015</span>/<span class="hljs-number">07</span>/<span class="hljs-number">29</span> <span class="hljs-number">12</span>:<span class="hljs-number">39</span>:<span class="hljs-number">37</span>] [ info] Configuration
+flush time     : <span class="hljs-number">5</span> seconds
+input plugins  : serial
+collectors     :
+[<span class="hljs-number">2015</span>/<span class="hljs-number">07</span>/<span class="hljs-number">29</span> <span class="hljs-number">12</span>:<span class="hljs-number">39</span>:<span class="hljs-number">37</span>] [ info] starting engine
+[<span class="hljs-number">2015</span>/<span class="hljs-number">07</span>/<span class="hljs-number">29</span> <span class="hljs-number">12</span>:<span class="hljs-number">39</span>:<span class="hljs-number">37</span>] [debug] Serial / file=<span class="hljs-string">&apos;/dev/ttyS0&apos;</span> bitrate=<span class="hljs-string">&apos;9600&apos;</span>
+[<span class="hljs-number">0</span>] [<span class="hljs-number">1438193365</span>, {<span class="hljs-string">&quot;msg&quot;</span>=&gt;<span class="hljs-string">&quot;test1&quot;</span>}]
+[<span class="hljs-number">1</span>] [<span class="hljs-number">1438193366</span>, {<span class="hljs-string">&quot;msg&quot;</span>=&gt;<span class="hljs-string">&quot;test2&quot;</span>}]
+[<span class="hljs-number">2</span>] [<span class="hljs-number">1438193367</span>, {<span class="hljs-string">&quot;msg&quot;</span>=&gt;<span class="hljs-string">&quot;test3&quot;</span>}]
+[<span class="hljs-number">3</span>] [<span class="hljs-number">1438193368</span>, {<span class="hljs-string">&quot;msg&quot;</span>=&gt;<span class="hljs-string">&quot;test4&quot;</span>}]
+</code></pre>
+<h2 id="emulating-serial-interface-on-linux">Emulating Serial Interface on Linux</h2>
+<p>The following content is some extra information that will allow you to emulate a serial interface on your Linux system, so you can test this <em>Serial</em> input plugin locally in case you don&apos;t have such interface in your computer. The following procedure have been tested on Ubuntu 15.04 running a Linux Kernel 4.0.</p>
+<h2 id="build-and-install-the-tty0tty-module">Build and install the tty0tty module</h2>
+<p>Download the sources</p>
+<pre><code class="lang-bash">$ git <span class="hljs-built_in">clone</span> https://github.com/freemed/tty0tty
+</code></pre>
+<p>Unpack and compile</p>
+<pre><code class="lang-bash">$ <span class="hljs-built_in">cd</span> tty0tty/module
+$ make
+</code></pre>
+<p>Copy the new kernel module into the kernel modules directory</p>
+<pre><code class="lang-bash">$ sudo cp tty0tty.ko /lib/modules/$(uname -r)/kernel/drivers/misc/
+</code></pre>
+<p>Load the module</p>
+<pre><code class="lang-bash">$ sudo depmod
+$ sudo modprobe tty0tty
+</code></pre>
+<p>You should see new serial ports in /dev/ (ls /dev/tnt*) Give appropriate permissions to the new serial ports:</p>
+<pre><code class="lang-bash">$ sudo chmod <span class="hljs-number">666</span> /dev/tnt*
+</code></pre>
+<p>When the module is loaded, it will interconnect the following virtual interfaces:</p>
+<pre><code class="lang-bash">/dev/tnt0 &lt;=&gt; /dev/tnt1
+/dev/tnt2 &lt;=&gt; /dev/tnt3
+/dev/tnt4 &lt;=&gt; /dev/tnt5
+/dev/tnt6 &lt;=&gt; /dev/tnt7
+</code></pre>
+<p>Now you can configure <a href="http://fluentbit.io" target="_blank">Fluent Bit</a> to listen on <em>/dev/tnt0</em> and write messages over <em>/dev/tnt1</em>, e.g:</p>
+<pre><code class="lang-bash">$ sudo bin/fluent-bit -c serial.conf -i serial -o stdout -V
+Fluent Bit v0.<span class="hljs-number">3.0</span>
+Copyright (C) Treasure Data
+
+[<span class="hljs-number">2015</span>/<span class="hljs-number">07</span>/<span class="hljs-number">29</span> <span class="hljs-number">12</span>:<span class="hljs-number">50</span>:<span class="hljs-number">03</span>] [ info] Configuration
+flush time     : <span class="hljs-number">5</span> seconds
+input plugins  : serial
+collectors     :
+[<span class="hljs-number">2015</span>/<span class="hljs-number">07</span>/<span class="hljs-number">29</span> <span class="hljs-number">12</span>:<span class="hljs-number">50</span>:<span class="hljs-number">03</span>] [ info] starting engine
+[<span class="hljs-number">2015</span>/<span class="hljs-number">07</span>/<span class="hljs-number">29</span> <span class="hljs-number">12</span>:<span class="hljs-number">50</span>:<span class="hljs-number">03</span>] [debug] Serial / file=<span class="hljs-string">&apos;/dev/tnt0&apos;</span> bitrate=<span class="hljs-string">&apos;9600&apos;</span>
+[<span class="hljs-number">2015</span>/<span class="hljs-number">07</span>/<span class="hljs-number">29</span> <span class="hljs-number">12</span>:<span class="hljs-number">50</span>:<span class="hljs-number">14</span>] [debug] [<span class="hljs-keyword">in</span>_serial] <span class="hljs-string">&apos;testing&apos;</span>
+[<span class="hljs-number">0</span>] [<span class="hljs-number">1438195814</span>, {<span class="hljs-string">&quot;msg&quot;</span>=&gt;<span class="hljs-string">&quot;testing&quot;</span>}]
+[<span class="hljs-number">2015</span>/<span class="hljs-number">07</span>/<span class="hljs-number">29</span> <span class="hljs-number">12</span>:<span class="hljs-number">50</span>:<span class="hljs-number">17</span>] [ info] Flush buf <span class="hljs-number">21</span> bytes
+</code></pre>
+<p>Write some messages</p>
+<pre><code class="lang-bash">$ <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;testing&quot;</span> &gt; /dev/tnt1
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../input/mqtt.html" class="navigation navigation-prev " aria-label="Previous page: MQTT"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../input/stdin.html" class="navigation navigation-next " aria-label="Next page: Standard Input"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontSettings":{"theme":null,"family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

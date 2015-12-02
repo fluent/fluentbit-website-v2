@@ -297,11 +297,11 @@
 			text-align: center;
 			cursor: default;
 			background-color: #37c0fb;
-			background-image: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
-			background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
-			background-image: -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
-			background-image: -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
-			background-image: linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
+			background-image: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.35)), url("images/bg01.png");
+			background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.35)), url("images/bg01.png");
+			background-image: -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.35)), url("images/bg01.png");
+			background-image: -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.35)), url("images/bg01.png");
+			background-image: linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.35)), url("images/bg01.png");
 			color: white;
 			border-radius: 100%;
 			display: inline-block;
@@ -309,12 +309,12 @@
 			height: 5em;
 			line-height: 5em;
 			box-shadow: 0 0 0 7px white, 0 0 0 8px #e0e0e0;
-			margin: 0 0 2em 0;
+			margin: 0 0 1em 0;
 		}
 
-			.icon.major:before {
-				font-size: 36px;
-			}
+		.icon.major:before {
+		    font-size: 36px;
+		}
 
 /* Lists */
 
@@ -702,7 +702,7 @@
 /* Banner */
 
 	#banner {
-		background-image: url("../images/banner.jpg");
+	    background-image: url("../images/fluentbit_wallpaper.jpg");
 		background-position: center center;
 		background-size: cover;
 		height: 28em;
@@ -727,7 +727,6 @@
 				font-size: 1.25em;
 				vertical-align: middle;
 			}
-
 				#banner header h2 em {
 					opacity: 0.75;
 				}
@@ -747,31 +746,31 @@
 
 /* Wrapper */
 
-	.wrapper {
-		padding: 5em 0 3em 0;
-	}
+	                .wrapper {
+		            padding: 4em 0 1em 0;
+	                }
 
-		.wrapper.style1 {
-			background: #fff;
-		}
+		        .wrapper.style1 {
+			    background: #fff;
+		        }
 
-		.wrapper.style2 {
-			background-color: #fff;
-			background-image: url("images/bg02.png"), url("images/bg03.png"), url("images/bg01.png");
-			background-position: top left,						bottom left,					top left;
-			background-size: 100% 6em,						100% 6em,						auto;
-			background-repeat: no-repeat,						no-repeat,						repeat;
-		}
+		        .wrapper.style2 {
+			    background-color: #fff;
+			    background-image: url("images/bg02.png"), url("images/bg03.png"), url("images/bg01.png");
+			    background-position: top left, bottom left,					top left;
+			    background-size: 100% 6em,	100% 6em,						auto;
+			    background-repeat: no-repeat, no-repeat,						repeat;
+		        }
 
-		.wrapper.style3 {
-			background-color: #37c0fb;
-			background-image: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
-			background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
-			background-image: -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
-			background-image: -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
-			background-image: linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
-			color: white;
-		}
+		        .wrapper.style3 {
+			    background-color: #37c0fb;
+			    background-image: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
+			    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
+			    background-image: -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
+			    background-image: -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
+			    background-image: linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.15)), url("images/bg01.png");
+			    color: white;
+		        }
 
 			.wrapper.style3 .button {
 				background: white;
