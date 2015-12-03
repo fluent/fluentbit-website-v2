@@ -1,0 +1,7 @@
+rm -rf _book
+gitbook build
+cp -r _/book/* /home/edsiper/coding/fluentbit-website-v2/documentation/
+cd /home/edsiper/coding/fluentbit-website-v2/documentation/
+rm *.sh
+#git add .
+git commit -s -m "Doc: sync documentation" -- .
