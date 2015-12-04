@@ -838,3 +838,17 @@
 			text-align: center;
 			font-size: 0.9em;
 		}
+
+
+                .textHide {
+                    display: none;
+                }
+
+                @media (max-width: 860px) {
+                    .logoHide {
+                        display: none;
+                    }
+                    .textHide {
+                        display: block;
+                    }
+                }
