@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>About | Fluent Bit</title>
+        <title>Elastic Search | Fluent Bit</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.1.0">
@@ -25,10 +25,10 @@
         
     
     
-    <link rel="next" href="../about/fluentd_and_fluentbit.html" />
+    <link rel="next" href="../output/fluentd.html" />
     
     
-    <link rel="prev" href="../index.html" />
+    <link rel="prev" href="../output/index.html" />
     
 
         
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="1" data-basepath=".." data-revision="Fri Dec 18 2015 10:42:15 GMT-0600 (CST)">
+    <div class="book" data-level="4.1" data-basepath=".." data-revision="Fri Dec 18 2015 10:42:15 GMT-0600 (CST)">
     
 
 <div class="book-summary">
@@ -66,7 +66,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1" data-path="about/index.html">
+        <li class="chapter " data-level="1" data-path="about/index.html">
             
                 
                     <a href="../about/index.html">
@@ -355,7 +355,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.1" data-path="output/elasticsearch.html">
+        <li class="chapter active" data-level="4.1" data-path="output/elasticsearch.html">
             
                 
                     <a href="../output/elasticsearch.html">
@@ -540,9 +540,65 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="about-fluent-bit">About Fluent Bit</h1>
-<p><a href="http://fluentbit.io" target="_blank">Fluent Bit</a> is an open source and multi-platform data collection tool which aims to be a generic Swiss knife for events collection on IoT environments and related hardware devices.</p>
-<p>We, <a href="http://treasuredata.com" target="_blank">Treasure Data</a>, as a Big Data company, provide an analytics infrastructure in the Cloud where we provide an end-to-end solution to collect, store and do analytics over the data. <a href="http://fluentbit.io" target="_blank">Fluent Bit</a> is an integral part of this pipeline where it solve the data collection needs where the <strong>source</strong> information may come from Embedded and IoT environments.</p>
+                        <h1 id="elastic-search">Elastic Search</h1>
+<p>The <strong>es</strong> output plugin, allows to flush your records into a <a href="http://www.elastic.co" target="_blank">Elastic Search</a> instance. The following instructions assumes that you have a fully operational Elastic service running.</p>
+<p>In order to flush records, the <strong>es</strong> plugin requires to know a few parameters, the following table describes a list of them:</p>
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th>description</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>host</td>
+<td>IP address or hostname of the target Elasticsearch instance</td>
+<td>127.0.0.1</td>
+</tr>
+<tr>
+<td>port</td>
+<td>TCP port of the target Elasticsearch instance</td>
+<td>92000</td>
+</tr>
+<tr>
+<td>index</td>
+<td>Elastic index</td>
+<td>fluentbit</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Elastic type</td>
+<td>test</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>The parameters <em>index</em> and <em>type</em> can be confusing if you are new to Elastic, if you have used a common relational database before, they can be compared to the <em>database</em> and <em>table</em> concepts.</p>
+</blockquote>
+<p>In order to override the default configuration values, the plugin uses the Fluent Bit network address format, e.g:</p>
+<pre><code>es://host:port/index/type
+</code></pre><h2 id="running">Running</h2>
+<p><a href="http://fluentbit.io" target="_blank">Fluent Bit</a> only requires to know that it needs to use the <strong>es</strong> output plugin, if no extra information is given it will use the default values specified in the above table.</p>
+<pre><code class="lang-bash">$ bin/fluent-bit -i cpu -o es
+Fluent-Bit v0.<span class="hljs-number">5.0</span>
+Copyright (C) Treasure Data
+
+[<span class="hljs-number">2015</span>/<span class="hljs-number">12</span>/<span class="hljs-number">18</span> <span class="hljs-number">10</span>:<span class="hljs-number">27</span>:<span class="hljs-number">23</span>] [ info] starting engine
+[<span class="hljs-number">2015</span>/<span class="hljs-number">12</span>/<span class="hljs-number">18</span> <span class="hljs-number">10</span>:<span class="hljs-number">27</span>:<span class="hljs-number">23</span>] [ info] [es] host=<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span> port=<span class="hljs-number">9200</span> index=fluentbit <span class="hljs-built_in">type</span>=<span class="hljs-built_in">test</span>
+...
+</code></pre>
+<p>As described above, the target service and storage point can be changed, e.g:</p>
+<pre><code class="lang-bash">$ bin/fluent-bit -i cpu -o es://<span class="hljs-number">192.168</span>.<span class="hljs-number">9.3</span>/metrics/cpu
+Fluent-Bit v0.<span class="hljs-number">5.0</span>
+Copyright (C) Treasure Data
+
+[<span class="hljs-number">2015</span>/<span class="hljs-number">12</span>/<span class="hljs-number">18</span> <span class="hljs-number">10</span>:<span class="hljs-number">33</span>:<span class="hljs-number">03</span>] [ info] starting engine
+[<span class="hljs-number">2015</span>/<span class="hljs-number">12</span>/<span class="hljs-number">18</span> <span class="hljs-number">10</span>:<span class="hljs-number">33</span>:<span class="hljs-number">03</span>] [ info] [es] host=<span class="hljs-number">192.168</span>.<span class="hljs-number">9.3</span> port=<span class="hljs-number">9200</span> index=metrics <span class="hljs-built_in">type</span>=cpu
+...
+</code></pre>
+<p>In order to check your incoming data, make sure to setup a Kibana service that visualize the rights <em>index</em> and <em>types</em> used by <a href="http://fluentbit.io" target="_blank">Fluent Bit</a>.</p>
 
                     
                     </section>
@@ -553,10 +609,10 @@
         </div>
 
         
-        <a href="../index.html" class="navigation navigation-prev " aria-label="Previous page: Introduction"><i class="fa fa-angle-left"></i></a>
+        <a href="../output/index.html" class="navigation navigation-prev " aria-label="Previous page: Output Plugins"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../about/fluentd_and_fluentbit.html" class="navigation navigation-next " aria-label="Next page: Fluentd &amp; Fluent Bit"><i class="fa fa-angle-right"></i></a>
+        <a href="../output/fluentd.html" class="navigation navigation-next " aria-label="Next page: Fluentd"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

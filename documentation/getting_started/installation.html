@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="2.2" data-basepath=".." data-revision="Mon Dec 07 2015 10:39:29 GMT-0600 (CST)">
+    <div class="book" data-level="2.2" data-basepath=".." data-revision="Fri Dec 18 2015 10:42:15 GMT-0600 (CST)">
     
 
 <div class="book-summary">
@@ -355,13 +355,28 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.1" data-path="output/fluentd.html">
+        <li class="chapter " data-level="4.1" data-path="output/elasticsearch.html">
+            
+                
+                    <a href="../output/elasticsearch.html">
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        Elastic Search
+                    </a>
+                
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="output/fluentd.html">
             
                 
                     <a href="../output/fluentd.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>4.1.</b>
+                            <b>4.2.</b>
                         
                         Fluentd
                     </a>
@@ -370,13 +385,13 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2" data-path="output/stdout.html">
+        <li class="chapter " data-level="4.3" data-path="output/stdout.html">
             
                 
                     <a href="../output/stdout.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>4.2.</b>
+                            <b>4.3.</b>
                         
                         Standard Output
                     </a>
@@ -385,13 +400,13 @@
             
         </li>
     
-        <li class="chapter " data-level="4.3" data-path="output/td.html">
+        <li class="chapter " data-level="4.4" data-path="output/td.html">
             
                 
                     <a href="../output/td.html">
                         <i class="fa fa-check"></i>
                         
-                            <b>4.3.</b>
+                            <b>4.4.</b>
                         
                         Treasure Data
                     </a>
@@ -553,11 +568,6 @@ $ <span class="hljs-built_in">cd</span> build/
 -- Generating <span class="hljs-keyword">done</span>
 -- Build files have been written to: /home/edsiper/coding/fluent-bit/build
 </code></pre>
-<p>For OSX, pass the <code>-DWITH_IN_MEM=OFF</code> option as follows</p>
-<pre><code class="lang-bash">$ cmake -DWITH_IN_MEM=OFF ../
-...
-...
-</code></pre>
 <p>Now you are ready to start the compilation process through the simple <em>make</em> command:</p>
 <pre><code class="lang-bash">$ make
 Scanning dependencies of target msgpack
@@ -644,6 +654,11 @@ available:</p>
 <td>On</td>
 </tr>
 <tr>
+<td><a href="../input/mqtt.html">WITH_IN_MQTT</a></td>
+<td>Enable MQTT input plugin</td>
+<td>No</td>
+</tr>
+<tr>
 <td><a href="../input/xbee.html">WITH_IN_XBEE</a></td>
 <td>Enable Xbee input plugin</td>
 <td>No</td>
@@ -674,6 +689,11 @@ available:</p>
 <tr>
 <td><a href="../output/td.html">WITH_OUT_TD</a></td>
 <td>Enable <a href="http://www.treasuredata.com" target="_blank">Treasure Data</a> output plugin</td>
+<td>On</td>
+</tr>
+<tr>
+<td><a href="../output/elasticsearch.html">WITH_OUT_ES</a></td>
+<td>Enable <a href="http://www.elastic.co" target="_blank">Elastic Search</a> output plugin</td>
 <td>On</td>
 </tr>
 </tbody>
