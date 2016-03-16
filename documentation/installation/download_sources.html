@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Treasure Data | Fluent Bit v0.7 Documentation</title>
+        <title>Download Sources | Fluent Bit v0.7 Documentation</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.1.0">
@@ -25,10 +25,10 @@
         
     
     
-    <link rel="next" href="../development/index.html" />
+    <link rel="next" href="../installation/build_install.html" />
     
     
-    <link rel="prev" href="../output/stdout.html" />
+    <link rel="prev" href="../installation/requirements.html" />
     
 
         
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="5.5" data-basepath=".." data-revision="Wed Mar 16 2016 15:06:09 GMT-0600 (CST)">
+    <div class="book" data-level="2.2" data-basepath=".." data-revision="Wed Mar 16 2016 15:06:09 GMT-0600 (CST)">
     
 
 <div class="book-summary">
@@ -163,7 +163,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="installation/download_sources.html">
+        <li class="chapter active" data-level="2.2" data-path="installation/download_sources.html">
             
                 
                     <a href="../installation/download_sources.html">
@@ -490,7 +490,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="5.5" data-path="output/td.html">
+        <li class="chapter " data-level="5.5" data-path="output/td.html">
             
                 
                     <a href="../output/td.html">
@@ -666,57 +666,16 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="treasure-data">Treasure Data</h1>
-<p>The <strong>td</strong> output plugin, allows to flush your records to the <a href="http://treasuredata.com" target="_blank">Treasure Data</a> cloud service.</p>
-<h2 id="configuration-file">Configuration File</h2>
-<p><a href="http://fluentbit.io" target="_blank">Fluent Bit</a> sources distribute an example configuration file for the <a href="http://www.treasuredata.com" target="_blank">Treasure Data</a> plugin and it&apos;s located under conf/td.conf. The plugin recognize the following setup under a TD section:</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>API</td>
-<td>The <a href="http://treasuredata.com" target="_blank">Treasure Data</a> API key. To obtain it please log into the <a href="https://console.treasuredata.com" target="_blank">Console</a> and in the API keys box, copy the API key hash.</td>
-</tr>
-<tr>
-<td>Database</td>
-<td>Specify the name of your target database.</td>
-</tr>
-<tr>
-<td>Table</td>
-<td>Specify the name of your target table where the records will be stored.</td>
-</tr>
-</tbody>
-</table>
-<p>Here is an example:</p>
-<pre><code class="lang-python">[TD]
-    API      <span class="hljs-number">5713</span>/e75be23caee19f8041dfa635ddfbd0dcd8c8d981
-    Database fluentbit
-    Table    samples
+                        <h1 id="download-sources">Download Sources</h1>
+<h2 id="stable">Stable</h2>
+<p>For production systems, we strongly suggest that you always get the latest stable release from our web site, you can get the official tarballs (.tar.gz) from the following link:</p>
+<p><a href="http://fluentbit.io/download/" target="_blank">http://fluentbit.io/download/</a></p>
+<h2 id="development">Development</h2>
+<p>For people who aims to contribute to the project testing or extending the code base, can get the development version from our GIT repository:</p>
+<pre><code class="lang-bash">$ git <span class="hljs-built_in">clone</span> https://github.com/fluent/fluent-bit
 </code></pre>
-<h2 id="running">Running</h2>
-<p>One the configuration file, just let <a href="http://fluentbit.io" target="_blank">Fluent Bit</a> know the input/output plugins plus the configuration file location, e.g:</p>
-<pre><code class="lang-bash">$ bin/fluent-bit -i cpu -o td -c ../conf/td.conf -V
-Fluent-Bit v0.<span class="hljs-number">3.0</span>
-Copyright (C) Treasure Data
-
-[<span class="hljs-number">2015</span>/<span class="hljs-number">10</span>/<span class="hljs-number">20</span> <span class="hljs-number">12</span>:<span class="hljs-number">48</span>:<span class="hljs-number">12</span>] [ info] Configuration
-flush time     : <span class="hljs-number">5</span> seconds
-input plugins  : cpu
-collectors     :
-[<span class="hljs-number">2015</span>/<span class="hljs-number">10</span>/<span class="hljs-number">20</span> <span class="hljs-number">12</span>:<span class="hljs-number">48</span>:<span class="hljs-number">12</span>] [ info] starting engine
-[<span class="hljs-number">2015</span>/<span class="hljs-number">10</span>/<span class="hljs-number">20</span> <span class="hljs-number">12</span>:<span class="hljs-number">48</span>:<span class="hljs-number">12</span>] [debug] TreasureData / database=<span class="hljs-string">&apos;fluentbit&apos;</span> table=<span class="hljs-string">&apos;samples&apos;</span>
-[<span class="hljs-number">2015</span>/<span class="hljs-number">10</span>/<span class="hljs-number">20</span> <span class="hljs-number">12</span>:<span class="hljs-number">48</span>:<span class="hljs-number">12</span>] [debug] [upstream] connecting to api.treasuredata.com:<span class="hljs-number">443</span>
-...
-</code></pre>
-<blockquote>
-<p>the -V argument is optional just to print out verbose messages.</p>
-</blockquote>
-<p>Once the service is running, you can check how data imported into the <a href="https://console.treasuredata.com" target="_blank">Treasure Data Console</a> selecting your target database and table. Note that the records can take a few seconds to show up into the interface.</p>
+<p>Note that our <em>master</em> branch is where the development of Fluent Bit happens. Since it&apos;s a development version, expect issues when compiling or at run time.</p>
+<p>We encourage everybody to help us testing every development version, at the end this is what will become stable.</p>
 
                     
                     </section>
@@ -727,10 +686,10 @@ collectors     :
         </div>
 
         
-        <a href="../output/stdout.html" class="navigation navigation-prev " aria-label="Previous page: Standard Output"><i class="fa fa-angle-left"></i></a>
+        <a href="../installation/requirements.html" class="navigation navigation-prev " aria-label="Previous page: Requirements"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../development/index.html" class="navigation navigation-next " aria-label="Next page: Fluent Bit for Developers"><i class="fa fa-angle-right"></i></a>
+        <a href="../installation/build_install.html" class="navigation navigation-next " aria-label="Next page: Build and Install"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

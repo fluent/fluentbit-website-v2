@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Treasure Data | Fluent Bit v0.7 Documentation</title>
+        <title>Build and Install | Fluent Bit v0.7 Documentation</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.1.0">
@@ -25,10 +25,10 @@
         
     
     
-    <link rel="next" href="../development/index.html" />
+    <link rel="next" href="../installation/debian_ubuntu.html" />
     
     
-    <link rel="prev" href="../output/stdout.html" />
+    <link rel="prev" href="../installation/download_sources.html" />
     
 
         
@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="5.5" data-basepath=".." data-revision="Wed Mar 16 2016 15:06:09 GMT-0600 (CST)">
+    <div class="book" data-level="2.3" data-basepath=".." data-revision="Wed Mar 16 2016 15:06:09 GMT-0600 (CST)">
     
 
 <div class="book-summary">
@@ -178,7 +178,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" data-path="installation/build_install.html">
+        <li class="chapter active" data-level="2.3" data-path="installation/build_install.html">
             
                 
                     <a href="../installation/build_install.html">
@@ -490,7 +490,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="5.5" data-path="output/td.html">
+        <li class="chapter " data-level="5.5" data-path="output/td.html">
             
                 
                     <a href="../output/td.html">
@@ -666,57 +666,204 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="treasure-data">Treasure Data</h1>
-<p>The <strong>td</strong> output plugin, allows to flush your records to the <a href="http://treasuredata.com" target="_blank">Treasure Data</a> cloud service.</p>
-<h2 id="configuration-file">Configuration File</h2>
-<p><a href="http://fluentbit.io" target="_blank">Fluent Bit</a> sources distribute an example configuration file for the <a href="http://www.treasuredata.com" target="_blank">Treasure Data</a> plugin and it&apos;s located under conf/td.conf. The plugin recognize the following setup under a TD section:</p>
+                        <h1 id="build-and-install">Build and Install</h1>
+<p><a href="http://fluentbit.io" target="_blank">Fluent Bit</a> uses <a href="http://cmake.org" target="_blank">CMake</a> as it build system. The suggested procedure to prepare the build system consist on the following steps:</p>
+<h2 id="prepare-environment">Prepare environment</h2>
+<blockquote>
+<p>In the following steps you can find exact commands to build and install the project with the default options. If you already know how CMake works you can skip this part and look at the build options available.</p>
+</blockquote>
+<p>Create a temporary <em>build/</em> directory inside the Fluent Bit sources:</p>
+<pre><code class="lang-bash">$ mkdir build
+$ <span class="hljs-built_in">cd</span> build/
+</code></pre>
+<p>Let <a href="http://cmake.org" target="_blank">CMake</a> configure the project specifying where the root path is located:</p>
+<pre><code class="lang-bash">$ cmake ../
+-- The C compiler identification is GNU <span class="hljs-number">4.9</span>.<span class="hljs-number">2</span>
+-- Check <span class="hljs-keyword">for</span> working C compiler: /usr/bin/cc
+-- Check <span class="hljs-keyword">for</span> working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - <span class="hljs-keyword">done</span>
+-- The CXX compiler identification is GNU <span class="hljs-number">4.9</span>.<span class="hljs-number">2</span>
+-- Check <span class="hljs-keyword">for</span> working CXX compiler: /usr/bin/c++
+-- Check <span class="hljs-keyword">for</span> working CXX compiler: /usr/bin/c++ -- works
+...
+-- Could NOT find Doxygen (missing:  DOXYGEN_EXECUTABLE)
+-- Looking <span class="hljs-keyword">for</span> accept4
+-- Looking <span class="hljs-keyword">for</span> accept4 - not found
+-- Configuring <span class="hljs-keyword">done</span>
+-- Generating <span class="hljs-keyword">done</span>
+-- Build files have been written to: /home/edsiper/coding/fluent-bit/build
+</code></pre>
+<p>Now you are ready to start the compilation process through the simple <em>make</em> command:</p>
+<pre><code class="lang-bash">$ make
+Scanning dependencies of target msgpack
+[  <span class="hljs-number">2</span>%] Building C object lib/msgpack-<span class="hljs-number">1.1</span>.<span class="hljs-number">0</span>/CMakeFiles/msgpack.dir/src/unpack.c.o
+[  <span class="hljs-number">4</span>%] Building C object lib/msgpack-<span class="hljs-number">1.1</span>.<span class="hljs-number">0</span>/CMakeFiles/msgpack.dir/src/objectc.c.o
+[  <span class="hljs-number">7</span>%] Building C object lib/msgpack-<span class="hljs-number">1.1</span>.<span class="hljs-number">0</span>/CMakeFiles/msgpack.dir/src/version.c.o
+...
+[ <span class="hljs-number">19</span>%] Building C object lib/monkey/mk_core/CMakeFiles/mk_core.dir/mk_file.c.o
+[ <span class="hljs-number">21</span>%] Building C object lib/monkey/mk_core/CMakeFiles/mk_core.dir/mk_rconf.c.o
+[ <span class="hljs-number">23</span>%] Building C object lib/monkey/mk_core/CMakeFiles/mk_core.dir/mk_string.c.o
+...
+Scanning dependencies of target fluent-bit-static
+[ <span class="hljs-number">66</span>%] Building C object src/CMakeFiles/fluent-bit-static.dir/flb_pack.c.o
+[ <span class="hljs-number">69</span>%] Building C object src/CMakeFiles/fluent-bit-static.dir/flb_input.c.o
+[ <span class="hljs-number">71</span>%] Building C object src/CMakeFiles/fluent-bit-static.dir/flb_output.c.o
+...
+Linking C executable ../bin/fluent-bit
+[<span class="hljs-number">100</span>%] Built target fluent-bit-bin
+</code></pre>
+<p>to continue installing the binary on the system just do:</p>
+<pre><code class="lang-bash">$ make install
+</code></pre>
+<p>it&apos;s likely you may need root privileges so you can try to prefixing the command with <em>sudo</em>.</p>
+<h2 id="build-options">Build Options</h2>
+<p>Fluent Bit provides certain options to CMake that can be enabled or disabled when configuring, please refer to the following tables under the <em>General Options</em>, <em>Input Plugins</em> and <em>Output Plugins</em> sections.</p>
+<h3 id="general-options">General Options</h3>
 <table>
 <thead>
 <tr>
-<th>Key</th>
-<th>Description</th>
+<th>option</th>
+<th>description</th>
+<th>default</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>API</td>
-<td>The <a href="http://treasuredata.com" target="_blank">Treasure Data</a> API key. To obtain it please log into the <a href="https://console.treasuredata.com" target="_blank">Console</a> and in the API keys box, copy the API key hash.</td>
+<td>WITH_ALL</td>
+<td>Enable all features available</td>
+<td>No</td>
 </tr>
 <tr>
-<td>Database</td>
-<td>Specify the name of your target database.</td>
+<td>WITH_DEBUG</td>
+<td>Build binaries with debug symbols</td>
+<td>No</td>
 </tr>
 <tr>
-<td>Table</td>
-<td>Specify the name of your target table where the records will be stored.</td>
+<td>WITH_TLS</td>
+<td>Buils with SSL/TLS support</td>
+<td>No</td>
+</tr>
+<tr>
+<td>WITHOUT_BIN</td>
+<td>Do not build executable</td>
+<td>No</td>
+</tr>
+<tr>
+<td>WITHOUT_EXAMPLES</td>
+<td>Do not build examples</td>
+<td>No</td>
+</tr>
+<tr>
+<td>WITHOUT_SHARED_LIB</td>
+<td>Do not build shared library</td>
+<td>No</td>
+</tr>
+<tr>
+<td>WITH_VALGRIND</td>
+<td>Enable Valgrind support</td>
+<td>No</td>
+</tr>
+<tr>
+<td>WITH_TRACE</td>
+<td>Enable trace mode&quot;</td>
+<td>No</td>
 </tr>
 </tbody>
 </table>
-<p>Here is an example:</p>
-<pre><code class="lang-python">[TD]
-    API      <span class="hljs-number">5713</span>/e75be23caee19f8041dfa635ddfbd0dcd8c8d981
-    Database fluentbit
-    Table    samples
-</code></pre>
-<h2 id="running">Running</h2>
-<p>One the configuration file, just let <a href="http://fluentbit.io" target="_blank">Fluent Bit</a> know the input/output plugins plus the configuration file location, e.g:</p>
-<pre><code class="lang-bash">$ bin/fluent-bit -i cpu -o td -c ../conf/td.conf -V
-Fluent-Bit v0.<span class="hljs-number">3.0</span>
-Copyright (C) Treasure Data
-
-[<span class="hljs-number">2015</span>/<span class="hljs-number">10</span>/<span class="hljs-number">20</span> <span class="hljs-number">12</span>:<span class="hljs-number">48</span>:<span class="hljs-number">12</span>] [ info] Configuration
-flush time     : <span class="hljs-number">5</span> seconds
-input plugins  : cpu
-collectors     :
-[<span class="hljs-number">2015</span>/<span class="hljs-number">10</span>/<span class="hljs-number">20</span> <span class="hljs-number">12</span>:<span class="hljs-number">48</span>:<span class="hljs-number">12</span>] [ info] starting engine
-[<span class="hljs-number">2015</span>/<span class="hljs-number">10</span>/<span class="hljs-number">20</span> <span class="hljs-number">12</span>:<span class="hljs-number">48</span>:<span class="hljs-number">12</span>] [debug] TreasureData / database=<span class="hljs-string">&apos;fluentbit&apos;</span> table=<span class="hljs-string">&apos;samples&apos;</span>
-[<span class="hljs-number">2015</span>/<span class="hljs-number">10</span>/<span class="hljs-number">20</span> <span class="hljs-number">12</span>:<span class="hljs-number">48</span>:<span class="hljs-number">12</span>] [debug] [upstream] connecting to api.treasuredata.com:<span class="hljs-number">443</span>
-...
-</code></pre>
-<blockquote>
-<p>the -V argument is optional just to print out verbose messages.</p>
-</blockquote>
-<p>Once the service is running, you can check how data imported into the <a href="https://console.treasuredata.com" target="_blank">Treasure Data Console</a> selecting your target database and table. Note that the records can take a few seconds to show up into the interface.</p>
+<h3 id="input-plugins">Input Plugins</h3>
+<p>The <em>input plugins</em> provides certain features to gather information from a specific source type which can be a
+network interface, some built-in metric or through a specific input device, the following input plugins are
+available:</p>
+<table>
+<thead>
+<tr>
+<th>option</th>
+<th>description</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../input/cpu.html">WITH_IN_CPU</a></td>
+<td>Enable CPU input plugin</td>
+<td>On</td>
+</tr>
+<tr>
+<td><a href="../input/head.html">WITH_IN_HEAD</a></td>
+<td>Enable Head input plugin</td>
+<td>On</td>
+</tr>
+<tr>
+<td><a href="../input/kmsg.html">WITH_IN_KMSG</a></td>
+<td>Enable Kernel log input plugin</td>
+<td>On</td>
+</tr>
+<tr>
+<td><a href="../input/mem.html">WITH_IN_MEM</a></td>
+<td>Enable Memory input plugin</td>
+<td>On</td>
+</tr>
+<tr>
+<td><a href="../input/serial.html">WITH_IN_SERIAL</a></td>
+<td>Enable Serial input plugin</td>
+<td>On</td>
+</tr>
+<tr>
+<td><a href="../input/stdin.html">WITH_IN_STDIN</a></td>
+<td>Enable Standard input plugin</td>
+<td>On</td>
+</tr>
+<tr>
+<td><a href="../input/mqtt.html">WITH_IN_MQTT</a></td>
+<td>Enable MQTT input plugin</td>
+<td>No</td>
+</tr>
+<tr>
+<td><a href="../input/xbee.html">WITH_IN_XBEE</a></td>
+<td>Enable Xbee input plugin</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="output-plugins">Output Plugins</h3>
+<p>The <em>output plugins</em> gives the capacity to flush the information to some external interface, service or terminal, the following table describes the output plugins available as of this version:</p>
+<table>
+<thead>
+<tr>
+<th>option</th>
+<th>description</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../output/elasticsearch.html">WITH_OUT_ES</a></td>
+<td>Enable <a href="http://www.elastic.co" target="_blank">Elastic Search</a> output plugin</td>
+<td>On</td>
+</tr>
+<tr>
+<td><a href="../output/fluentd.html">WITH_OUT_FLUENTD</a></td>
+<td>Enable <a href="http://www.fluentd.org" target="_blank">Fluentd</a> output plugin</td>
+<td>On</td>
+</tr>
+<tr>
+<td><a href="../output/nats.html">WITH_OUT_NATS</a></td>
+<td>Enable <a href="http://www.nats.io" target="_blank">NATS</a> output plugin</td>
+<td>On</td>
+</tr>
+<tr>
+<td><a href="../output/stdout.html">WITH_OUT_STDOUT</a></td>
+<td>Enable STDOUT output plugin</td>
+<td>On</td>
+</tr>
+<tr>
+<td><a href="../output/td.html">WITH_OUT_TD</a></td>
+<td>Enable <a href="http://www.treasuredata.com" target="_blank">Treasure Data</a> output plugin</td>
+<td>On</td>
+</tr>
+</tbody>
+</table>
 
                     
                     </section>
@@ -727,10 +874,10 @@ collectors     :
         </div>
 
         
-        <a href="../output/stdout.html" class="navigation navigation-prev " aria-label="Previous page: Standard Output"><i class="fa fa-angle-left"></i></a>
+        <a href="../installation/download_sources.html" class="navigation navigation-prev " aria-label="Previous page: Download Sources"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../development/index.html" class="navigation navigation-next " aria-label="Next page: Fluent Bit for Developers"><i class="fa fa-angle-right"></i></a>
+        <a href="../installation/debian_ubuntu.html" class="navigation navigation-next " aria-label="Next page: Debian/Ubuntu"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

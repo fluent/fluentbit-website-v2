@@ -5,7 +5,7 @@
         
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Treasure Data | Fluent Bit v0.7 Documentation</title>
+        <title>Ingest Records Manually | Fluent Bit v0.7 Documentation</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.1.0">
@@ -25,10 +25,8 @@
         
     
     
-    <link rel="next" href="../development/index.html" />
     
-    
-    <link rel="prev" href="../output/stdout.html" />
+    <link rel="prev" href="../development/library_api.html" />
     
 
         
@@ -36,7 +34,7 @@
     <body>
         
         
-    <div class="book" data-level="5.5" data-basepath=".." data-revision="Wed Mar 16 2016 15:06:09 GMT-0600 (CST)">
+    <div class="book" data-level="6.2" data-basepath=".." data-revision="Wed Mar 16 2016 15:06:09 GMT-0600 (CST)">
     
 
 <div class="book-summary">
@@ -490,7 +488,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="5.5" data-path="output/td.html">
+        <li class="chapter " data-level="5.5" data-path="output/td.html">
             
                 
                     <a href="../output/td.html">
@@ -541,7 +539,7 @@
             
         </li>
     
-        <li class="chapter " data-level="6.2" data-path="development/ingest_records_manually.html">
+        <li class="chapter active" data-level="6.2" data-path="development/ingest_records_manually.html">
             
                 
                     <a href="../development/ingest_records_manually.html">
@@ -666,57 +664,69 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="treasure-data">Treasure Data</h1>
-<p>The <strong>td</strong> output plugin, allows to flush your records to the <a href="http://treasuredata.com" target="_blank">Treasure Data</a> cloud service.</p>
-<h2 id="configuration-file">Configuration File</h2>
-<p><a href="http://fluentbit.io" target="_blank">Fluent Bit</a> sources distribute an example configuration file for the <a href="http://www.treasuredata.com" target="_blank">Treasure Data</a> plugin and it&apos;s located under conf/td.conf. The plugin recognize the following setup under a TD section:</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>API</td>
-<td>The <a href="http://treasuredata.com" target="_blank">Treasure Data</a> API key. To obtain it please log into the <a href="https://console.treasuredata.com" target="_blank">Console</a> and in the API keys box, copy the API key hash.</td>
-</tr>
-<tr>
-<td>Database</td>
-<td>Specify the name of your target database.</td>
-</tr>
-<tr>
-<td>Table</td>
-<td>Specify the name of your target table where the records will be stored.</td>
-</tr>
-</tbody>
-</table>
-<p>Here is an example:</p>
-<pre><code class="lang-python">[TD]
-    API      <span class="hljs-number">5713</span>/e75be23caee19f8041dfa635ddfbd0dcd8c8d981
-    Database fluentbit
-    Table    samples
+                        <h1 id="ingest-records-manually">Ingest Records Manually</h1>
+<p>There are some cases where Fluent Bit library is used to send records from the caller application to some destination, this process is called <em>manual data ingestion</em>.</p>
+<p>For this purpose a specific input plugin called <strong>lib</strong> exists and can be using in conjunction with the <strong>flb_lib_push()</strong> API function.</p>
+<h2 id="data-format">Data Format</h2>
+<p>The <strong>lib</strong> input plugin expect the data comes in a fixed JSON format as follows:</p>
+<pre><code>[UNIX_TIMESTAMP, MAP]
+</code></pre><p>Every record must be a JSON array that contains at least two entries. The first one is the <em>UNIX_TIMESTAMP</em> which is a number representing time associated to the event generation (Epoch time) and the second entry is a JSON map with a list of key/values. A valid entry can be the following:</p>
+<pre><code class="lang-json">[<span class="hljs-number">1449505010</span>, {<span class="hljs-string">&quot;key1&quot;</span>: <span class="hljs-string">&quot;some value&quot;</span>, <span class="hljs-string">&quot;key2&quot;</span>: <span class="hljs-literal">false</span>}]
 </code></pre>
-<h2 id="running">Running</h2>
-<p>One the configuration file, just let <a href="http://fluentbit.io" target="_blank">Fluent Bit</a> know the input/output plugins plus the configuration file location, e.g:</p>
-<pre><code class="lang-bash">$ bin/fluent-bit -i cpu -o td -c ../conf/td.conf -V
-Fluent-Bit v0.<span class="hljs-number">3.0</span>
-Copyright (C) Treasure Data
+<h2 id="usage">Usage</h2>
+<p>The following C code snippet shows how to insert a few JSON records into a running Fluent Bit engine:</p>
+<pre><code class="lang-C"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> &lt;fluent-bit.h&gt;</span>
 
-[<span class="hljs-number">2015</span>/<span class="hljs-number">10</span>/<span class="hljs-number">20</span> <span class="hljs-number">12</span>:<span class="hljs-number">48</span>:<span class="hljs-number">12</span>] [ info] Configuration
-flush time     : <span class="hljs-number">5</span> seconds
-input plugins  : cpu
-collectors     :
-[<span class="hljs-number">2015</span>/<span class="hljs-number">10</span>/<span class="hljs-number">20</span> <span class="hljs-number">12</span>:<span class="hljs-number">48</span>:<span class="hljs-number">12</span>] [ info] starting engine
-[<span class="hljs-number">2015</span>/<span class="hljs-number">10</span>/<span class="hljs-number">20</span> <span class="hljs-number">12</span>:<span class="hljs-number">48</span>:<span class="hljs-number">12</span>] [debug] TreasureData / database=<span class="hljs-string">&apos;fluentbit&apos;</span> table=<span class="hljs-string">&apos;samples&apos;</span>
-[<span class="hljs-number">2015</span>/<span class="hljs-number">10</span>/<span class="hljs-number">20</span> <span class="hljs-number">12</span>:<span class="hljs-number">48</span>:<span class="hljs-number">12</span>] [debug] [upstream] connecting to api.treasuredata.com:<span class="hljs-number">443</span>
-...
+<span class="hljs-preprocessor">#<span class="hljs-keyword">define</span> JSON_1   &quot;[1449505010, {\&quot;key1\&quot;: \&quot;some value\&quot;}]&quot;</span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">define</span> JSON_2   &quot;[1449505620, {\&quot;key1\&quot;: \&quot;some new value\&quot;}]&quot;</span>
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">int</span> ret;
+    flb_ctx_t *ctx;
+    flb_input_t *in;
+    flb_output_t *out;
+
+    <span class="hljs-comment">/* Create library context */</span>
+    ctx = flb_create();
+    <span class="hljs-keyword">if</span> (!ctx) {
+        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+    }
+
+    <span class="hljs-comment">/* Enable the input plugin for manual data ingestion */</span>
+    in = flb_input(ctx, <span class="hljs-string">&quot;lib&quot;</span>, NULL);
+    <span class="hljs-keyword">if</span> (!in) {
+        flb_destroy(ctx);
+        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+    }
+
+    <span class="hljs-comment">/* Enable output plugin &apos;stdout&apos; (print records to the standard output) */</span>
+    out = flb_output(ctx, <span class="hljs-string">&quot;stdout&quot;</span>, NULL);
+    <span class="hljs-keyword">if</span> (!out) {
+        flb_destroy(ctx);
+        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+    }
+
+    <span class="hljs-comment">/* Start the engine */</span>
+    ret = flb_start(ctx);
+    <span class="hljs-keyword">if</span> (ret == -<span class="hljs-number">1</span>) {
+        flb_destroy(ctx);
+        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+    }
+
+    <span class="hljs-comment">/* Ingest data manually */</span>
+    flb_lib_push(in, JSON_1, <span class="hljs-keyword">sizeof</span>(JSON_1) - <span class="hljs-number">1</span>);
+    flb_lib_push(in, JSON_2, <span class="hljs-keyword">sizeof</span>(JSON_2) - <span class="hljs-number">1</span>);
+
+    <span class="hljs-comment">/* Stop the engine (5 seconds to flush remaining data) */</span>
+    flb_stop(ctx);
+
+    <span class="hljs-comment">/* Destroy library context, release all resources */</span>
+    flb_destroy(ctx);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
 </code></pre>
-<blockquote>
-<p>the -V argument is optional just to print out verbose messages.</p>
-</blockquote>
-<p>Once the service is running, you can check how data imported into the <a href="https://console.treasuredata.com" target="_blank">Treasure Data Console</a> selecting your target database and table. Note that the records can take a few seconds to show up into the interface.</p>
 
                     
                     </section>
@@ -727,10 +737,8 @@ collectors     :
         </div>
 
         
-        <a href="../output/stdout.html" class="navigation navigation-prev " aria-label="Previous page: Standard Output"><i class="fa fa-angle-left"></i></a>
+        <a href="../development/library_api.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Library API"><i class="fa fa-angle-left"></i></a>
         
-        
-        <a href="../development/index.html" class="navigation navigation-next " aria-label="Next page: Fluent Bit for Developers"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

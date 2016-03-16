@@ -1,0 +1,23 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'uninstall', '-g', 'gitbook' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.38
+4 verbose node symlink /usr/bin/node
+5 verbose lib/node_modules/gitbook unbuild
+6 info preuninstall gitbook@2.6.7
+7 info uninstall gitbook@2.6.7
+8 verbose true,/usr/lib/node_modules,/usr/lib/node_modules unbuild gitbook@2.6.7
+9 verbose /usr/bin,[object Object] binRoot
+10 error Error: EACCES, unlink '/usr/bin/gitbook'
+10 error  { [Error: EACCES, unlink '/usr/bin/gitbook'] errno: 3, code: 'EACCES', path: '/usr/bin/gitbook' }
+11 error Please try running this command again as root/Administrator.
+12 error System Linux 4.3.0-040300-generic
+13 error command "/usr/bin/node" "/usr/bin/npm" "uninstall" "-g" "gitbook"
+14 error cwd /home/edsiper/coding/fluent-bit/documentation
+15 error node -v v0.10.38
+16 error npm -v 1.4.28
+17 error path /usr/bin/gitbook
+18 error code EACCES
+19 error errno 3
+20 error stack Error: EACCES, unlink '/usr/bin/gitbook'
+21 verbose exit [ 3, true ]
