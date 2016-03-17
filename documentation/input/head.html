@@ -36,7 +36,7 @@
     <body>
         
         
-    <div class="book" data-level="4.2" data-basepath=".." data-revision="Wed Mar 16 2016 15:06:09 GMT-0600 (CST)">
+    <div class="book" data-level="4.2" data-basepath=".." data-revision="Thu Mar 17 2016 09:31:38 GMT-0600 (CST)">
     
 
 <div class="book-summary">
@@ -667,7 +667,7 @@
                     <section class="normal" id="section-">
                     
                         <h1 id="head">Head</h1>
-<p>The <strong>head</strong> input plugin, allows to read events from the head of file. It&apos;s behavior is similar to the <em>tail</em> command.</p>
+<p>The <strong>head</strong> input plugin, allows to read events from the head of file. It&apos;s behavior is similar to the <em>head</em> command.</p>
 <h2 id="configuration-file">Configuration File</h2>
 <p><a href="http://fluentbit.io" target="_blank">Fluent Bit</a> sources distribute an example configuration file for the plugin and it&apos;s located under <em>conf/in_head.conf</em>. The plugin recognize the following setup under a <strong>HEAD</strong> section:</p>
 <table>
@@ -712,7 +712,7 @@
     Buf_Size <span class="hljs-number">256</span>
 
     <span class="hljs-comment"># Total Interval</span>
-    <span class="hljs-comment">#     = Interval Sec + ( Interval Nsec * 1000 * 1000 * 1000 )</span>
+    <span class="hljs-comment">#     = Interval Sec + ( Interval Nsec / 1000 / 1000 / 1000 )</span>
     <span class="hljs-comment">#</span>
     <span class="hljs-comment"># Interval Sec</span>
     <span class="hljs-comment"># ====</span>
